@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;//added by me
 import java.util.List;
-import java.io.*;
-import java.util.*;
+import org.apache.commons.lang3.StringUtils;
+
 
 import static jdk.nashorn.internal.objects.NativeString.toLowerCase;
 
@@ -41,12 +41,11 @@ public class JobData {
         loadData();
 
         ArrayList<String> values = new ArrayList<>();
-
+        //for (HashMap<String, String> row : allJobs)
         for (HashMap<String, String> row : allJobs) {
             String aValue = row.get(field);//iterate over each row on the same coloumn field.
 
-            if (!toLowerCase(values).contains(toLowerCase(aValue)))/*no duplicates and the list isnt empty for
-option 4-Skill under List*/  {
+            if (!toLowerCase(values).contains(toLowerCase(aValue)))  {
                 values.add(aValue);
 
             }
@@ -82,11 +81,8 @@ option 4-Skill under List*/  {
 
         for (HashMap<String, String> row : allJobs) {
 
-            String aValue = row.get(column); //in the row get the column passed in assigned to the aValue-which
-            //is the column itself.
-
-            if (toLowerCase(aValue).contains(toLowerCase(value))) {//if aValue is in the row+column intersect
-                //cell of that column then ok to add to jobs arraylist
+            String aValue = row.get(column);
+            if (StringUtils.containsIgnoreCase(aValue, value)) {
                 jobs.add(row);
             }
         }
@@ -120,24 +116,24 @@ option 4-Skill under List*/  {
         for (HashMap<String, String> row : allJobs) {//alljobs is of this type---->>>ArrayList<HashMap<String,
             //String>>.
             //String aValue = row.get(value);
-            for (Map.Entry<String, String> subhash : row.entrySet()) {
+            for (Map.Entry<String, String> subhash : row.entrySet()){
+                //for (Map.Entry<String, String> subhash : row.entrySet()) {
                 //System.out.println(subhash.getKey() + " :" + subhash.getValue() );
                 //String aValue = subhash.getValue();
-                if (toLowerCase(subhash.getValue()).contains(toLowerCase(value))) {
+                //if (toLowerCase(subhash.getValue()).contains(toLowerCase(value)))
+                if(StringUtils.containsIgnoreCase(subhash.getValue(), value)) {
+                //if ( toLowerCase(subhash.getValue()).contains(toLowerCase(value))) {
+                    //containsIgnoreCase
 
                     //System.out.println("FindByValue-->over 'allJobs' search term value is: "+subhash.getValue
                     //());
                     jobs.add(row);
+                    break;
                 }
 
-                //if(!jobs.contains(value))
-                //jobs.add(row);
-                //if (allJobs.contains(value)) {
-                //jobs.add(row);
-                //}
+
             }
-            //System.out.println("passed in value " + value + " into the method ArrayList<HashMap<String,
-            //String>> findByValue(String value)");
+
 
 
         }

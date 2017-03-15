@@ -63,7 +63,7 @@ public class TechJobs {
 
                 if (searchField.equals("all")) {
                     printJobs(JobData.findByValue(searchTerm));
-                    //System.out.println("coming from main-->Search all fields in progress.");
+
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
@@ -112,37 +112,38 @@ public class TechJobs {
     }
 
     // Print a list of jobs
-    private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {//somejobs is of type
-        //arraylist<<hashmap>>
-                //i added use this ------>>>>>> public static ArrayList<HashMap<String, String>> findAll()
-                Boolean choice1 = false;
+    private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        // ArrayList<HashMap<String, String>> printalljobs   = new ArrayList<>();
-        //printalljobs=someJobs;
-        //HashMap<String, String> newjob1 = new HashMap<>();
-        //String []
+        int count = 1;//ounter for individual job#
+        if (someJobs.isEmpty()) {
+            System.out.println("\n################################");
+            System.out.println("No Jobs Found. Please try again");
+            System.out.println("################################");
+        }
+        else {System.out.println("\n");
 
-        int count=1;
-        for (HashMap<String, String> hash : someJobs){
-            choice1=true;
-            {//System.out.println(hash.keySet()+" <-key,values-> "+hash.values()+"hash size is: "+hash.size
-               // ());
-                System.out.println("Job list# "+count++);
+            for (Map<String, String> hash : someJobs) {//accessing the key and values.
+                System.out.println("Job list# " + count++);
                 System.out.println("**********");
-                for (Map.Entry<String, String> subhash : hash.entrySet()) {
-                    System.out.println(subhash.getKey() + " :" + subhash.getValue() );
+
+                for (String key : hash.keySet()) {
+                    System.out.print(key);
+                    System.out.print(" : ");
+                    System.out.println(hash.get(key));
                 }
                 System.out.println("**********\n");
+
+
             }
-
-        }
-        if (choice1=true)
             System.out.println("\n##################");
-        System.out.println(((int)count-1)+" Job listings found");
-        System.out.println("##################");
+            System.out.println(someJobs.size() + " Jobs Found");
+            System.out.println("##################");
 
-        if (choice1=false)
-            System.out.println("Search yields no result. Please try again. printJobs is not done!");
-    }
+        }//else ends.
+        }
+
 }
+
+
+
 
