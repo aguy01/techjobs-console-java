@@ -113,33 +113,43 @@ public class JobData {
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
 
-        for (HashMap<String, String> row : allJobs) {//alljobs is of this type---->>>ArrayList<HashMap<String,
+        /**
+
+         ---------------------------------newly done
+
+         for (HashMap<String, String> alpha : allJobs) {//alljobs is of type---->>>ArrayList<HashMap<String,
+         //String>>.
+         //String aValue = row.get(value);
+         for (String beta : alpha.values()){//Map.Entry<String, String> subhash : alpha.entrySet()
+         //String a1= beta;
+         if(StringUtils.containsIgnoreCase(beta, value)) {
+
+         jobs.add(alpha);
+         break;
+         }
+         }
+
+
+         *
+         *
+         *
+         */
+
+
+
+        for (HashMap<String, String> alpha : allJobs) {//alljobs is of type---->>>ArrayList<HashMap<String,
             //String>>.
             //String aValue = row.get(value);
-            for (Map.Entry<String, String> subhash : row.entrySet()){
-                //for (Map.Entry<String, String> subhash : row.entrySet()) {
-                //System.out.println(subhash.getKey() + " :" + subhash.getValue() );
-                //String aValue = subhash.getValue();
-                //if (toLowerCase(subhash.getValue()).contains(toLowerCase(value)))
-                if(StringUtils.containsIgnoreCase(subhash.getValue(), value)) {
-                //if ( toLowerCase(subhash.getValue()).contains(toLowerCase(value))) {
-                    //containsIgnoreCase
+            for (String beta : alpha.values()){//Map.Entry<String, String> subhash : alpha.entrySet()
+                //String a1= beta;
+                if(StringUtils.containsIgnoreCase(beta, value)) {
 
-                    //System.out.println("FindByValue-->over 'allJobs' search term value is: "+subhash.getValue
-                    //());
-                    jobs.add(row);
+                    jobs.add(alpha);
                     break;
                 }
-
-
             }
 
-
-
         }
-
-
-
         return jobs;
     }
 

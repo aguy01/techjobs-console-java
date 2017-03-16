@@ -122,7 +122,7 @@ public class TechJobs {
         }
         else {System.out.println("\n");
 
-            for (Map<String, String> hash : someJobs) {//accessing the key and values.
+            for (Map<String, String> hash : someJobs) {//accessing the key and value.
                 System.out.println("Job list# " + count++);
                 System.out.println("**********");
 
