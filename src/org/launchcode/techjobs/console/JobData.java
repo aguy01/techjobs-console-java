@@ -112,36 +112,9 @@ public class JobData {
 
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
-
-        /**
-
-         ---------------------------------newly done
-
-         for (HashMap<String, String> alpha : allJobs) {//alljobs is of type---->>>ArrayList<HashMap<String,
-         //String>>.
-         //String aValue = row.get(value);
-         for (String beta : alpha.values()){//Map.Entry<String, String> subhash : alpha.entrySet()
-         //String a1= beta;
-         if(StringUtils.containsIgnoreCase(beta, value)) {
-
-         jobs.add(alpha);
-         break;
-         }
-         }
-
-
-         *
-         *
-         *
-         */
-
-
-
         for (HashMap<String, String> alpha : allJobs) {//alljobs is of type---->>>ArrayList<HashMap<String,
-            //String>>.
-            //String aValue = row.get(value);
-            for (String beta : alpha.values()){//Map.Entry<String, String> subhash : alpha.entrySet()
-                //String a1= beta;
+
+            for (String beta : alpha.values()){
                 if(StringUtils.containsIgnoreCase(beta, value)) {
 
                     jobs.add(alpha);
